@@ -2,7 +2,7 @@ import {getConecction} from '../database/connection.js'
 import sql from 'mssql';
 
 /* TABLA DE USUARIOS */
-export const getUsuariostoLog = async (req,res) =>{
+export const Login = async (req,res) =>{
     
     console.log(req.body.correo);
     console.log(req.body.usuario);
