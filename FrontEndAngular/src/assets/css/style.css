@@ -117,11 +117,11 @@
     border: var(--border-production-item);
   }
   .subitem{
-    flex-grow: 2;
-    flex-basis: min-content;
+    flex-grow: 1;
+    flex-basis:min-content;
     padding: var(--padding-item);
     margin: var(--margin-item);
-    border: var(--border-production-subitem);
+    border:var(--border-production-subitem);
   }
   .flex-row{
     display: flex;
@@ -133,6 +133,8 @@
   }
 
   /* FORM */
+
+  /* LOGIN */
   .big-form{
     box-shadow: var(--gral_box-shadow);
     border-radius: var(--gral_border-radius);
@@ -184,6 +186,13 @@
   .btn:focus{
     background-color: green;
   }
+  .register{
+    box-shadow: var(--gral_box-shadow);
+    max-width: 40rem;
+    color:white;
+    text-transform: capitalize;
+    border-radius: var(--gral_border-radius);
+  }
   /* SLIDER */
   .slider{
     background-image: url('https://t21.com.mx/wp-content/uploads/2024/05/Castores-01.jpg');
@@ -204,10 +213,14 @@
     display: grid;
     place-items: center;
     text-align: center;
-    color:white;
+    color:black;
   }
 
 
-
-
+ /* MEDIA QUERY */
+  @media (max-width:500px){
+    .flex-row{
+        flex-direction: column;
+    }
+}
 
