@@ -1,0 +1,48 @@
+<div class="center">
+    <div class="big-form">
+
+        <div class="item center flex-column">
+            <div class="img-wrap">
+                <img src="https://i.pinimg.com/564x/f9/78/92/f9789220e0172dc68a3ac36edef51d1c.jpg" alt="image"/>
+            </div>
+            <span>InnovaTube</span>
+        </div>
+    
+        <div class="subitem flex-column">
+    
+            <form class="form flex-column" #userForm="ngForm" (ngSubmit)="onSubmit($event)">
+    
+                <div class="item">
+                    <label for="usuario">E-mail/Usuario</label>
+                    <input type="text" name="usuario" #nombre='ngModel' [(ngModel)]= "form.usuario" pattern="[a-zA-Z]+$|^[^\s@]+@[^\s@]+\.[^\s@]+$"/>
+
+                    <small id="validation" *ngIf="!nombre.valid && nombre.touched">
+                        El campo es obligatorio
+                    </small>
+                </div>
+    
+                <div class="item">
+                    <label for="contrasena">Contraseña (5 Digitos)</label>
+                    <input type="password" placeholder="***" name="password" #psw='ngModel' [(ngModel)]= "form.password"
+                    pattern="\d{5,5}"/>
+
+                    <small id="validation" *ngIf="!psw.valid && psw.touched">
+                        El campo es obligatorio
+                    </small>
+                </div>
+    
+                <div class="item center">
+                    <a class="" href="#">¿Haz olvidado tu contraseña?</a>
+                </div>
+    
+                <div class="item center">
+                    <button class="btn" type="submit" [disabled]="userForm.invalid">Iniciar Sesión</button>
+
+                    <button [routerLink]="['/registro']" class="btn" type="button">Registrarse</button>
+                </div>
+    
+            </form>
+        </div>
+    </div>  
+</div>
+
