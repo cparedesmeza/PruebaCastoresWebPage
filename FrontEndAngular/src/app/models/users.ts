@@ -7,6 +7,7 @@ export class Users{
         public correo: string,
         public password: string,
         public newpassword: string,
-        public estatus: string
+        public estatus: string,
+        recaptchaToken?: string
     ){}
 }
