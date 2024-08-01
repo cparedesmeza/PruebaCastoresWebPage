@@ -5,10 +5,8 @@
         <div class="item">
             <div class="navbar-brand img-wrap flex-row">
                 <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="Avatar Logo" style="width:40px;"
-                    class="rounded-pill">
-                    <span class="title">Bienvenido de nuevo, </span>
-                    <span class="title">{{usuario.nombre}}</span>
-                
+                    class="rounded-pill"/>
+                <span>Bienvenido de nuevo, {{usuario.nombre}}</span>   
             </div>   
         </div>
 
@@ -30,34 +28,22 @@
 </nav>
 
 <!-- BUTTON AND TITLE -->
-<div class="container-fluid slider center">
+<div class="container-fluid slider-content">
+    <form class="form">
+        <form class="form flex-column" #userForm="ngForm" (ngSubmit)="onsubmit($event)">
+    
+            <div class="item">
+                <label for="busqueda">Buscar</label>
+                <input type="text" name="busqueda" #busqueda='ngModel' [(ngModel)]="texto.input" pattern="[a-zA-Z]+$|^[^\s@]+@[^\s@]+\.[^\s@]+$" required/>
 
-    <div class="slider-content flex-row">
-        <div class="subitem center">
-            <button class="btn-play" data-bs-toggle="modal"
-                data-bs-target="#videoModal">
-                <i class="bi bi-play-fill"></i>
-            </button>
-        </div>
-        <div class="subitem center">
-            <h4 class="title"> Ver Video Institucional</h4>
-        </div>
-    </div>
+                <small id="validation" *ngIf="!busqueda.valid && busqueda.touched">
+                    El campo es obligatorio
+                </small>
 
-</div>
-
-<!-- VIDEO MODAL -->
-<div class="modal fade" id="videoModal">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <!-- Modal body -->
-            <div class="modal-body">
-                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">x</span>
-                </button>
-
-
+                <button class="btn" type="submit" [disabled]="userForm.invalid">Buscar</button>
             </div>
-        </div>
-    </div>
+        </form>
+    </form>
 </div>
+
+

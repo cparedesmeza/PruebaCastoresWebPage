@@ -10,12 +10,13 @@ import { Users } from '../../models/users';
   styleUrl: './home.component.css'
 })
 export class HomeComponent implements OnInit {
-  
+  public texto: any;
   public id_usuario: string = '';
   public url: string = Global.url;
   public usuario: Users;
+  
+  
   constructor(
-    private _router: Router,
     private _route: ActivatedRoute,
     private userService : UserService,
   ){
@@ -29,6 +30,10 @@ export class HomeComponent implements OnInit {
         newpassword:'',
         estatus:''
     }
+    this.texto = {
+       input: '',
+       results: {},
+    }
   }
   ngOnInit(){
     this._route.params.subscribe((params:Params) =>{
@@ -41,5 +46,14 @@ export class HomeComponent implements OnInit {
     })
 
   }
-  
+
+  onsubmit(e:Event){
+    e.preventDefault();
+    console.log(this.texto)
+    this.userService.searchYoutube().subscribe(res=>{
+       res.items.forEach((item:any)=> {
+            console.log(item.id.videoId);        
+       });
+      })
+  }
 }
