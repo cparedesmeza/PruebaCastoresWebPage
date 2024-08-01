@@ -1,59 +1,45 @@
-import { Component, OnInit} from '@angular/core';
-import { ActivatedRoute,Params, Router } from '@angular/router';
+import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Global } from '../../services/global';
-import { UserService } from '../../services/user.services';
-import { Users } from '../../models/users';
+import { youtubeService } from '../../services/youtube.services';
+import { Link } from '../../models/links';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent {
+
   public texto: any;
   public id_usuario: string = '';
   public url: string = Global.url;
-  public usuario: Users;
-  
-  
+  public favorita: Link;
+
+
   constructor(
     private _route: ActivatedRoute,
-    private userService : UserService,
-  ){
-    this.usuario = {
-        id_usuario:'',
-        nombre:'',
-        apellido:'',
-        usuario:'',
-        correo:'',
-        password:'',
-        newpassword:'',
-        estatus:''
-    }
+    private youtubeService: youtubeService
+  ) {
     this.texto = {
-       input: '',
-       results: {},
+      input: '',
+      idVideo: '',
     }
+    this.favorita = {title: '', date:'', url:'', description:''}
   }
-  ngOnInit(){
-    this._route.params.subscribe((params:Params) =>{
-      this.id_usuario = params['id'];
-    });
-    this.userService.getUser(this.id_usuario).subscribe(res=>{
-      if(res.message == 'success'){
-        this.usuario = res.results[0];
-      }
-    })
-
-  }
-
-  onsubmit(e:Event){
+    
+  
+  onsubmit(e: Event) {
     e.preventDefault();
-    console.log(this.texto)
-    this.userService.searchYoutube().subscribe(res=>{
-       res.items.forEach((item:any)=> {
-            console.log(item.id.videoId);        
-       });
+    this.youtubeService.searchYoutube(this.texto.input).subscribe(res => {
+      this.texto.idVideo = res.items;
+    })
+  }
+
+  mostrarFavorita(event:{item:Link}){
+      this.favorita = event.item;
+      this.youtubeService.newFavorita(this.favorita).subscribe(res=>{
+        console.log(res)
       })
   }
 }

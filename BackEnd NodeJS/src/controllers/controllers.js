@@ -68,6 +68,26 @@ export const getUser = async (req, res) => {
         })
     }
 }
+/* TABLA DE VIDEOS */
+export const newRegister = async (req,res) =>{
+    console.log(req.body)
+    const pool = await getConecction();
+    const result = await pool.request()
+    .input('title', sql.VarChar, req.body.title)
+    .input('description', sql.VarChar, req.body.description)
+    .input('date', sql.VarChar, req.body.date)
+    .input('url', sql.VarChar, req.body.url)
+    .query("INSERT INTO videosFavoritos(title,description,date,url) VALUES (@title,@description,@date,@url); SELECT SCOPE_IDENTITY() AS id;");
+    res.json({
+        message: 'success',
+        results: {
+            title: req.body.title,
+            description: req.body.description,
+            date: req.body.date,
+            url: req.body.url,
+        }
+        })
+}
 
 
 

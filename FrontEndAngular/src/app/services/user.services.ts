@@ -28,13 +28,5 @@ export class UserService{
     getUser(id_usuario:string):Observable<any>{
         return this._http.get(this.url+'getUser/'+id_usuario);
     }
-    searchYoutube():Observable<any> {
-        const apiKey = 'AIzaSyAiI2t2c1vWIrubs66bcA5aPaawxIL6lrA';
-        const query = 'programación en JavaScript';
-        const maxResults = 5;
 
-        const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${encodeURIComponent(query)}&type=video&maxResults=${maxResults}&key=${apiKey}`;
-
-        return this._http.get(url)
-    }
 }

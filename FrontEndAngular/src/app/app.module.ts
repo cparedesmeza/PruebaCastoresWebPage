@@ -15,13 +15,20 @@ import { RegistroComponent } from './components/registro/registro.component';
 import { UserService } from './services/user.services';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './components/home/home.component';
+import { BusquedaComponent } from './components/busqueda/busqueda.component';
+import { youtubeService } from './services/youtube.services';
+import { HeaderComponent } from './components/header/header.component';
+import { MonitoreoComponent } from './components/monitoreo/monitoreo.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegistroComponent,
-    HomeComponent
+    HomeComponent,
+    BusquedaComponent,
+    HeaderComponent,
+    MonitoreoComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +39,8 @@ import { HomeComponent } from './components/home/home.component';
   ],
   providers: [
     provideClientHydration(),
-    UserService
+    UserService,
+    youtubeService
   ],
   bootstrap: [AppComponent]
 })

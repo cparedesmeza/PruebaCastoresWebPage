@@ -1,0 +1,11 @@
+<div class="container center flex-row">
+    <article>
+        <div class="img-wrap">
+            <p>{{busqueda.url}}</p>
+        </div>
+        <h2>{{busqueda.title}}</h2>
+        <span class="date">{{busqueda.date}}</span>
+        <p>{{busqueda.description}}</p>
+        <button (click)="elegirFavorita($event,busqueda)">Pulsame</button>
+    </article>
+</div>

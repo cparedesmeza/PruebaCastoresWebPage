@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import { getConecction } from './database/connection.js';
-import router from './routes/products.routes.js';
+import router from './routes/routes.js';
 
 // Conectar a la base de datos
 getConecction();
