@@ -24,7 +24,7 @@ export class RegistroComponent {
         correo:'',
         password:'',
         newpassword:'',
-        estatus:'Activo'
+        estatus:''
       }
     }
 

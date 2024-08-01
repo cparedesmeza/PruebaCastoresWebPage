@@ -1,1 +1,63 @@
-<p>home works!</p>
+<nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+
+    <div class="container-fluid">
+        <!--USUARIO-->
+        <div class="item">
+            <div class="navbar-brand img-wrap flex-row">
+                <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="Avatar Logo" style="width:40px;"
+                    class="rounded-pill">
+                    <span class="title">Bienvenido de nuevo, </span>
+                    <span class="title">{{usuario.nombre}}</span>
+                
+            </div>   
+        </div>
+
+        <!--LOGO-->
+        <div class="item center">
+            <div class="navbar-brand img-wrap">
+                <img src="https://i.pinimg.com/564x/f9/78/92/f9789220e0172dc68a3ac36edef51d1c.jpg" alt="image" />
+            </div>
+        </div>
+        <!--BOTON RESPONSIVO-->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse center" id="collapsibleNavbar">
+            <a class="" [routerLink]="['/login']">Cerrar Sesión</a>
+        </div>
+    </div>
+</nav>
+
+<!-- BUTTON AND TITLE -->
+<div class="container-fluid slider center">
+
+    <div class="slider-content flex-row">
+        <div class="subitem center">
+            <button class="btn-play" data-bs-toggle="modal"
+                data-bs-target="#videoModal">
+                <i class="bi bi-play-fill"></i>
+            </button>
+        </div>
+        <div class="subitem center">
+            <h4 class="title"> Ver Video Institucional</h4>
+        </div>
+    </div>
+
+</div>
+
+<!-- VIDEO MODAL -->
+<div class="modal fade" id="videoModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal body -->
+            <div class="modal-body">
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">x</span>
+                </button>
+
+
+            </div>
+        </div>
+    </div>
+</div>

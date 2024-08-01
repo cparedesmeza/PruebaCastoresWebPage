@@ -25,5 +25,8 @@ export class UserService{
         let headers = new HttpHeaders().set('Content-Type','application/json')
         return  this._http.post(this.url +'NewUser',params,{headers:headers});
     }
+    getUser(id_usuario:string):Observable<any>{
+        return this._http.get(this.url+'getUser/'+id_usuario);
+    }
 
 }
