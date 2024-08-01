@@ -4,6 +4,9 @@ import { Routes, RouterModule,ExtraOptions} from "@angular/router";
 import { LoginComponent } from "./components/login/login.component";
 import { RegistroComponent } from "./components/registro/registro.component";
 import { HomeComponent } from "./components/home/home.component";
+import { MonitoreoComponent } from "./components/monitoreo/monitoreo.component";
+import { BusquedaComponent } from "./components/busqueda/busqueda.component";
+import { FavoritasComponent } from "./components/favoritas/favoritas.component";
 
 //Options del router
 const routerOptions: ExtraOptions = {
@@ -14,8 +17,8 @@ const routerOptions: ExtraOptions = {
 const appRoutes: Routes = [
     { path: '', component: LoginComponent },
     { path: 'login', component: LoginComponent },
-    { path: 'monitoreo', component: LoginComponent },
-    { path: 'busqueda', component: LoginComponent },
+    { path: 'monitoreo/:id', component: MonitoreoComponent },
+    { path: 'favoritas/:id', component: FavoritasComponent },
     { path: 'registro', component: RegistroComponent },
     { path: 'home/:id', component: HomeComponent },
     

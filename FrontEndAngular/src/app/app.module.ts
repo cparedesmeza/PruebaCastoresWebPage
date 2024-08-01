@@ -19,6 +19,7 @@ import { BusquedaComponent } from './components/busqueda/busqueda.component';
 import { youtubeService } from './services/youtube.services';
 import { HeaderComponent } from './components/header/header.component';
 import { MonitoreoComponent } from './components/monitoreo/monitoreo.component';
+import { FavoritasComponent } from './components/favoritas/favoritas.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { MonitoreoComponent } from './components/monitoreo/monitoreo.component';
     HomeComponent,
     BusquedaComponent,
     HeaderComponent,
-    MonitoreoComponent
+    MonitoreoComponent,
+    FavoritasComponent
   ],
   imports: [
     BrowserModule,

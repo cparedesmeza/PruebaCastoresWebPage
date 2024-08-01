@@ -28,10 +28,13 @@
                   <a class="nav-link active" [routerLink]="['/login']">Cerrar Sesion</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" [routerLink]="['/registro']">Favoritas</a>
+                    <a class="nav-link" [routerLink]="['/home/'] + usuario.id_usuario">Home</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" [routerLink]="['/favoritas/'] + usuario.id_usuario">Favoritas</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" data-bs-toggle="tab" href="#menu2">Monitoreo</a>
+                    <a class="nav-link" [routerLink]="['/monitoreo/'] + usuario.id_usuario">Monitoreo</a>
                 </li>
             </ul>
 
