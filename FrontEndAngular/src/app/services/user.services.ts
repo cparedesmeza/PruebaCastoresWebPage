@@ -14,12 +14,16 @@ export class UserService{
     ){
         this.url = Global.url;
     }
-    prueba(){
-        console.log("soy el servicio de articles");
-    }
+
     login(user: Users):Observable<any>{
         let params = JSON.stringify(user);
         let headers = new HttpHeaders().set('Content-Type','application/json')
         return  this._http.post(this.url +'login',params,{headers:headers});
     }
+    NewUser(user: Users):Observable<any>{
+        let params = JSON.stringify(user);
+        let headers = new HttpHeaders().set('Content-Type','application/json')
+        return  this._http.post(this.url +'NewUser',params,{headers:headers});
+    }
+
 }

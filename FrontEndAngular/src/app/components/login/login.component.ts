@@ -22,17 +22,9 @@ export class LoginComponent {
   }
   onSubmit =(e:Event)=>{
     e.preventDefault();
-
-    if(!this.form.usuario){
-      alert('Ingresar datos en el campo usuario');
-    }else if(!this.form.password){
-      alert('Ingresar datos en el campo password');
-    }else{
-      
-      if(this.form.usuario.includes('@')){
+    if(this.form.usuario.includes('@')){
         this.form.correo = this.form.usuario;
-      }
-      
+    }      
       alert('Formulario Enviado')
       this._userService.login(this.form).subscribe(res=>{
       if(res.message == 'success'){
@@ -40,6 +32,4 @@ export class LoginComponent {
         }
       });
     }
-    
-  }
 }

@@ -30,6 +30,29 @@ export const Login = async (req,res) =>{
     }
    
 }
+export const newUser = async (req,res) =>{
+    console.log(req.body);
+    const pool = await getConecction();
+    const result = await pool.request()
+    .input('nombre',sql.VarChar,req.body.nombre)
+    .input('apellido',sql.VarChar,req.body.apellido)
+    .input('usuario',sql.VarChar,req.body.usuario)
+    .input('correo',sql.VarChar,req.body.correo)
+    .input('password',sql.VarChar,req.body.password)
+    .input('newpassword',sql.VarChar,req.body.newpassword)
+    .input('estatus',sql.VarChar, 'Activo')
+    .query("INSERT INTO usuarios(nombre,apellido,usuario,correo,password,newpassword,estatus) VALUES (@nombre,@apellido,@usuario,@correo,@password,@newpassword,@estatus); SELECT SCOPE_IDENTITY() AS id_producto;");
+    console.log(result);
+    res.json({
+        message: 'success',
+        results: {
+            id: result.recordset[0].id_producto,
+            usuario: req.body.usuario,
+            correo: req.body.correo,
+            password: req.body.password
+        }
+    });
+}
 
 
 

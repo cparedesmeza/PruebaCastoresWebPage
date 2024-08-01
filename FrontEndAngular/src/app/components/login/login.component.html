@@ -14,7 +14,7 @@
     
                 <div class="item">
                     <label for="usuario">E-mail/Usuario</label>
-                    <input type="text" name="usuario" #nombre='ngModel' [(ngModel)]= "form.usuario" pattern="[a-zA-Z]+$|^[^\s@]+@[^\s@]+\.[^\s@]+$"/>
+                    <input type="text" name="usuario" #nombre='ngModel' [(ngModel)]= "form.usuario" pattern="[a-zA-Z]+$|^[^\s@]+@[^\s@]+\.[^\s@]+$" required/>
 
                     <small id="validation" *ngIf="!nombre.valid && nombre.touched">
                         El campo es obligatorio
@@ -24,7 +24,7 @@
                 <div class="item">
                     <label for="contrasena">Contraseña (5 Digitos)</label>
                     <input type="password" placeholder="***" name="password" #psw='ngModel' [(ngModel)]= "form.password"
-                    pattern="\d{5,5}"/>
+                    pattern="\d{5,5}" required/>
 
                     <small id="validation" *ngIf="!psw.valid && psw.touched">
                         El campo es obligatorio
