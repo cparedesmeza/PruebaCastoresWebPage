@@ -1,2 +1,35 @@
 <app-header></app-header>
-<p>favoritas works!</p>
+<div class="container-fluid center slider-content">
+    
+    <div class="item flex-column center busqueda">
+        <div class="subitem">
+            <h3>Videos marcados como favoritos</h3>
+        </div>
+        <div class="subitem mt-3 center table-responsive-md">
+            <table class="table-bordered" >
+                <thead>
+                    <tr>
+                        <th>Titulo</th>
+                        <th>Descripción</th>
+                        <th>Fecha</th>
+                        <th>url</th>
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let regis of register">
+                    <tr>
+                        <td>{{regis.title}}</td>
+                        <td>{{regis.description}}</td>
+                        <td>{{regis.date}}</td>
+                        <td>
+                            <span>https://www.youtube.com/watch?v=</span>
+                            <span>{{regis.url}}</span>
+                        </td>
+                        <td><button class="btn" (click)="seleccionarFavorita($event,regis.url)">Quitar</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+</div>

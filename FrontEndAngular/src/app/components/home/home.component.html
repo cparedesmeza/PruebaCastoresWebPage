@@ -1,25 +1,28 @@
 <app-header></app-header>
 <!-- PRINCIPAL -->
-<div class="container-fluid slider-content flex-row">
+<div class="container-fluid slider-content flex-row center">
 
+    <div class="item flex-column busqueda">
         <form class="form flex-column" #userForm="ngForm" (ngSubmit)="onsubmit($event)">
-    
-            <div class="item">
-                <label for="busqueda">Buscar</label>
-                <input type="text" name="busqueda" #busqueda='ngModel' [(ngModel)]="texto.input" pattern="[a-zA-Z]+$|^[^\s@]+@[^\s@]+\.[^\s@]+$" required/>
+            <div class="item center">
+                <label for="Busqueda">Busqueda detallada</label>
+                <input type="text" name="busqueda" #busqueda='ngModel' [(ngModel)]="texto.input" pattern="^[A-Za-z0-9 ]+$" required/>
 
-                <small id="validation" *ngIf="!busqueda.valid && busqueda.touched">
+                <div id="validation" *ngIf="!busqueda.valid && busqueda.touched">
                     El campo es obligatorio
-                </small>
+                </div>
 
                 <button class="btn" type="submit" [disabled]="userForm.invalid">Buscar</button>
-            </div>
+            </div>           
         </form>
-        <h4>Busqueda detallada</h4>
         <div class="item flex-column center" *ngFor="let item of texto.idVideo">
             <app-busqueda [idVideo]= "item" (marcarFavorita)="mostrarFavorita($event)" ></app-busqueda>
             
         </div>
+    </div>
+       
+
+        
 </div>
 
 

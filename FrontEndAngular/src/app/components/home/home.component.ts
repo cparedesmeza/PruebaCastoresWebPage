@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute} from '@angular/router';
 import { Global } from '../../services/global';
 import { youtubeService } from '../../services/youtube.services';
 import { Link } from '../../models/links';
@@ -31,6 +31,7 @@ export class HomeComponent {
   
   onsubmit(e: Event) {
     e.preventDefault();
+    console.log(this.texto.input);
     this.youtubeService.searchYoutube(this.texto.input).subscribe(res => {
       this.texto.idVideo = res.items;
     })

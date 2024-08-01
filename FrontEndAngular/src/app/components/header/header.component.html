@@ -6,7 +6,8 @@
             <div class="navbar-brand img-wrap flex-row">
                 <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="Avatar Logo" style="width:40px;"
                     class="rounded-pill"/>
-                <span>Bienvenido de nuevo, {{usuario.nombre}}</span>   
+                <span class="title">Bienvenido de nuevo,</span>
+                <span class="title">{{usuario.nombre}}</span>   
             </div>   
         </div>
 
@@ -25,7 +26,7 @@
             
             <ul class="nav nav-tabs">
                 <li class="nav-item">
-                  <a class="nav-link active" [routerLink]="['/login']">Cerrar Sesion</a>
+                  <a class="nav-link" [routerLink]="['/login']">Cerrar Sesion</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" [routerLink]="['/home/'] + usuario.id_usuario">Home</a>

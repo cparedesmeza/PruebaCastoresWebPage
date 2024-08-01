@@ -88,7 +88,31 @@ export const newRegister = async (req,res) =>{
         }
         })
 }
-
+export const getRegister = async (req,res) =>{
+    const pool = await getConecction();
+    const result = await pool.request()
+    .query('SELECT * FROM videosFavoritos')
+    if (result.rowsAffected[0] === 0) {
+        return res.json({ message: 'Error en la busqueda' });
+    }else{
+        res.json({
+            message: 'success',
+            results: result.recordset
+        })
+    }
+}
+export const deleteRegister = async (req,res) =>{
+    console.log(req.params)
+    const pool = await getConecction();
+    const result = await pool.request()
+    .input('url',sql.VarChar,req.params.id)
+    .query("DELETE FROM videosFavoritos WHERE url=@url");
+    if(result.rowsAffected[0] === 0){
+        return res.status(404).json({message: 'Video inexistente'});
+    }else{
+        res.status(202).json({message: 'Video eliminado de favoritos'});
+    }
+}
 
 
 
