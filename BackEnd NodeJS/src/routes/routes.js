@@ -1,5 +1,5 @@
 import { Router } from "express";
-import {getUser, Login, newUser, newRegister, getRegister, deleteRegister} from "../controllers/controllers.js";
+import {getUser, Login, newUser, newRegister, getRegister, deleteRegister, newHistory, getHistory} from "../controllers/controllers.js";
 
 const router = Router();
 router.post("/login", Login);
@@ -10,5 +10,9 @@ router.get('/getUser/:id',getUser);
 router.post('/newRegister',newRegister);
 router.get('/getRegister', getRegister);
 router.delete('/deleteRegister/:id', deleteRegister);
+
+/* Rutas para historial */
+router.post('/newHistory',newHistory);
+router.get('/getHistory',getHistory);
 
 export default router;

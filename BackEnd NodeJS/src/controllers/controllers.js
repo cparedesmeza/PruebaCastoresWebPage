@@ -4,9 +4,6 @@ import sql from 'mssql';
 /* TABLA DE USUARIOS */
 export const Login = async (req, res) => {
 
-    console.log(req.body.correo);
-    console.log(req.body.usuario);
-    console.log(req.body.password);
     const pool = await getConecction();
     const result = await pool.request()
         .input('usuario', sql.VarChar, req.body.usuario)
@@ -131,4 +128,49 @@ export const deleteRegister = async (req, res) => {
     } else {
         res.status(202).json({ message: 'Video eliminado de favoritos' });
     }
+}
+
+/* TABLA DE HISTORIAL */
+export const newHistory = async (req, res) => {
+    console.log(req.body.nombre)
+    const date = ObterFechayHora();
+    const pool = await getConecction();
+    const result = await pool.request()
+        .input('nombre', sql.VarChar, req.body.nombre)
+        .input('usuario', sql.VarChar, req.body.usuario)
+        .input('fecha_hora', sql.VarChar, date)
+        .input('correo', sql.VarChar, req.body.correo)
+        .input('actividad',sql.VarChar,'Login')
+        .query("INSERT INTO historialLogin(nombre,usuario,fecha_hora,correo,actividad) VALUES (@nombre,@usuario,@fecha_hora,@correo,@actividad); SELECT SCOPE_IDENTITY() AS id_historial;");
+    res.json({
+        message: 'success',
+        results: {
+            id_historial: result.recordset[0].id_historial
+        }
+    })
+
+}
+export const getHistory = async (req, res) => {
+    const pool = await getConecction();
+    const result = await pool.request()
+        .query('SELECT * FROM historialLogin')
+    if (result.rowsAffected[0] === 0) {
+        return res.json({ message: 'Error en la busqueda' });
+    } else {
+        res.json({
+            message: 'success',
+            results: result.recordset
+        })
+    }
+}
+
+const ObterFechayHora = () =>{
+    const fechaHoraActual = new Date();
+    const anio = fechaHoraActual.getFullYear();
+    const mes = (fechaHoraActual.getMonth() + 1).toString().padStart(2, '0'); 
+    const dia = fechaHoraActual.getDate().toString().padStart(2, '0');
+    const horas = fechaHoraActual.getHours().toString().padStart(2, '0');
+    const minutos = fechaHoraActual.getMinutes().toString().padStart(2, '0');
+    const segundos = fechaHoraActual.getSeconds().toString().padStart(2, '0');
+    return `${dia}-${mes}-${anio} ${horas}:${minutos}:${segundos}`;
 }

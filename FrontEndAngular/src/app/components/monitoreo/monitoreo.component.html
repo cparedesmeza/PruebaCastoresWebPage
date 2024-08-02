@@ -1,2 +1,30 @@
 <app-header></app-header>
-<p>monitoreo works!</p>
+<div class="container-fluid center slider-content">
+    
+    <div class="item flex-column center busqueda">
+        <div class="subitem">
+            <h3>Monitoreo de Login</h3>
+        </div>
+        <div class="subitem mt-3 center table-responsive-md">
+            <table class="table-bordered" >
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Usuario</th>
+                        <th>Correo</th>
+                        <th>Fecha/Hora</th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let regis of register">
+                    <tr>
+                        <td data-titulo="Nombre">{{regis.nombre}}</td>
+                        <td data-titulo="Usuario">{{regis.usuario}}</td>
+                        <td data-titulo="Correo">{{regis.correo}}</td>
+                        <td data-titulo="Fecha/Hora">{{regis.fecha_hora}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+</div>

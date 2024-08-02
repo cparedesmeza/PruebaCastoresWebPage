@@ -229,4 +229,7 @@
   .subitem{
     padding: 0;
   }
+  .navbar-brand img{
+    display:none;
+  }
 }

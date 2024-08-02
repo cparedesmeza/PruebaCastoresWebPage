@@ -28,12 +28,17 @@ export class LoginComponent {
     }      
       this._userService.login(this.form).subscribe(res=>{
       if(res.message == 'success'){
-          Swal.fire({
+           this._userService.newHistorial(res.results[0]).subscribe(res=>{
+           if(res.message= 'success'){
+              console.log('datos guardados');
+           }
+        })
+        Swal.fire({
             title: "Log in realizado",
             text: "Bienvenido de nuevo",
             icon: "success"
-          });
-          this._router.navigate(['/home/' + res.results[0].id_usuario]) 
+        });
+        this._router.navigate(['/home/' + res.results[0].id_usuario]) 
       }else{
         Swal.fire({
           title: "Log in no realizado",
