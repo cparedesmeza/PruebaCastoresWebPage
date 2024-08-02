@@ -17,7 +17,6 @@ const routerOptions: ExtraOptions = {
 
 const appRoutes: Routes = [
     { path: '', component: LoginComponent },
-    { path: '**', component: LoginComponent },
     { path: 'login', component: LoginComponent },
     { path: 'monitoreo/:id', component: MonitoreoComponent },
     { path: 'favoritas/:id', component: FavoritasComponent },
