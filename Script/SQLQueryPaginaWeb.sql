@@ -1,0 +1,25 @@
+USE DbPrueba;
+CREATE TABLE usuarios (
+	id_usuario INT IDENTITY(1,1) PRIMARY KEY,
+	nombre VARCHAR(100) NOT NULL,
+	apellido VARCHAR(100) NOT NULL,
+	correo VARCHAR(50) NOT NULL,
+	usuario VARCHAR(50) NOT NULL,
+	password VARCHAR(25) NOT NULL,
+	newpassword VARCHAR(25) NOT NULL,
+	estatus VARCHAR(50) NOT NULL
+)
+CREATE TABLE historialLogin (
+	nombre VARCHAR(50) NOT NULL,
+	usuario VARCHAR(50) NOT NULL,
+	correo VARCHAR(50) NOT NULL,
+	fecha_hora VARCHAR(50) NOT NULL,
+	actividad VARCHAR(50) NOT NULL
+)
+CREATE TABLE videosFavoritos(
+	title VARCHAR(MAX) NOT NULL,
+	description VARCHAR(MAX) NOT NULL,
+	date VARCHAR(50) NOT NULL,
+	url VARCHAR(50) NOT NULL,
+	correo VARCHAR(50) NOT NULL,
+)
