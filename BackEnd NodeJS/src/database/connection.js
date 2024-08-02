@@ -1,17 +1,21 @@
+import dotenv from 'dotenv';
 import sql from 'mssql';
 
+dotenv.config();
+console.log('Server:', process.env.DB_SERVER);
+
 const dbSettings = {
-    user: 'cparedes',
-    password: '12345',
-    server:'localhost',
-    database: 'DbPrueba',
-    options:{
-        encrypt: false,
-        trustServerCertificate: true,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    server: process.env.DB_SERVER,
+    database: process.env.DB_DATABASE,
+    options: {
+        encrypt: process.env.DB_ENCRYPT === 'true',
+        trustServerCertificate: process.env.DB_TRUST_SERVER_CERTIFICATE === 'true',
     }
 }
 
-export const getConecction = async ()=>{
+export const getConecction = async () => {
     try {
         const pool = await sql.connect(dbSettings);
         console.log('Conexión a base de datos correcta')
