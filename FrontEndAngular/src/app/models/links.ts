@@ -3,6 +3,7 @@ export class Link{
         public title: string,
         public date: string,
         public url: string,
-        public description: string
+        public description: string,
+        public correo: string
     ){}
 }

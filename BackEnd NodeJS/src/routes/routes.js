@@ -8,7 +8,7 @@ router.get('/getUser/:id',getUser);
 
 /* Rutas para videos */
 router.post('/newRegister',newRegister);
-router.get('/getRegister', getRegister);
+router.post('/getRegister', getRegister);
 router.delete('/deleteRegister/:id', deleteRegister);
 
 /* Rutas para historial */

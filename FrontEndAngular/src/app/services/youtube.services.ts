@@ -24,8 +24,10 @@ export class youtubeService{
         let headers = new HttpHeaders().set('Content-Type','application/json')
         return  this._http.post(this.url +'NewRegister',params,{headers:headers});
     }
-    getFavorita():Observable<any>{
-        return this._http.get(this.url + 'getRegister')
+    getFavorita(favorita:string):Observable<any>{
+        let params = JSON.stringify(favorita);
+        let headers = new HttpHeaders().set('Content-Type','application/json')
+        return this._http.post(this.url + 'getRegister',params,{headers:headers});
     }
     deleteFavorita(id:string):Observable<any>{
         let headers = new HttpHeaders().set('Content-Type','application/json');

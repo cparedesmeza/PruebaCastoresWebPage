@@ -15,6 +15,7 @@
     --gral_border-radius: 10px;
     --gral_box-shadow: 0px 0px 5px black;
   }
+ 
 
   /* HELPER CLASS */
   .center{
@@ -171,6 +172,9 @@
     text-align: center;
     color: white;
     
+  }
+  table th td{ 
+    color:var(--main_text_color);
   }
 
  /* MEDIA QUERY */

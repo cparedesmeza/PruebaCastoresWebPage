@@ -92,7 +92,8 @@ export const newRegister = async (req, res) => {
         .input('description', sql.VarChar, req.body.description)
         .input('date', sql.VarChar, req.body.date)
         .input('url', sql.VarChar, req.body.url)
-        .query("INSERT INTO videosFavoritos(title,description,date,url) VALUES (@title,@description,@date,@url); SELECT SCOPE_IDENTITY() AS id;");
+        .input('correo',sql.VarChar,req.body.correo)
+        .query("INSERT INTO videosFavoritos(title,description,date,url,correo) VALUES (@title,@description,@date,@url,@correo); SELECT SCOPE_IDENTITY() AS id;");
     res.json({
         message: 'success',
         results: {
@@ -100,14 +101,18 @@ export const newRegister = async (req, res) => {
             description: req.body.description,
             date: req.body.date,
             url: req.body.url,
+            correo: req.body.correo
         }
     })
 
 }
 export const getRegister = async (req, res) => {
+
     const pool = await getConecction();
     const result = await pool.request()
-        .query('SELECT * FROM videosFavoritos')
+    .input('correo',sql.VarChar, req.body.correo)
+    .query('SELECT * FROM videosFavoritos WHERE correo=@correo')
+    console.log(result)
     if (result.rowsAffected[0] === 0) {
         return res.json({ message: 'Error en la busqueda' });
     } else {

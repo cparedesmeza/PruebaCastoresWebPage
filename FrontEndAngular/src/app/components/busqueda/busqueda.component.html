@@ -1,11 +1,9 @@
 <div class="container center flex-row busqueda">
     <article>
-        <div class="img-wrap">
-            <p>{{busqueda.url}}</p>
-        </div>
+        <a href="https://www.youtube.com/watch?v={{busqueda.url}}">Link Video</a>
         <h2>{{busqueda.title}}</h2>
         <span class="date">{{busqueda.date}}</span>
         <p>{{busqueda.description}}</p>
-        <button class="btn" (click)="elegirFavorita($event,busqueda)">Pulsame</button>
+        <button class="btn" (click)="elegirFavorita($event,busqueda)">Escoger favorita</button>
     </article>
 </div>

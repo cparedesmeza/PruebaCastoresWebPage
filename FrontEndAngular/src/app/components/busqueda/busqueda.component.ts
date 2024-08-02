@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output, OnInit} from '@angular/core';
 import { Link } from '../../models/links';
-import { isNgTemplate } from '@angular/compiler';
+import { UserService } from '../../services/user.services';
+import { ActivatedRoute,Params} from '@angular/router';
 
 @Component({
   selector: 'app-busqueda',
@@ -11,18 +12,33 @@ export class BusquedaComponent implements OnInit {
   @Input() idVideo: any;
   @Output() marcarFavorita = new EventEmitter;
   
+  public user:any;
   public busqueda:Link;
+  public id_usuario: string = '';
   
-  constructor(){
-    this.busqueda = {title: '', date:'', url:'', description:''}
+  constructor(
+    private userService: UserService,
+    private _route: ActivatedRoute,
+  ){
+    this.busqueda = {title: '', date:'', url:'', description:'',correo:''}
   }
   ngOnInit() {
-    this.busqueda = {
-      title: this.idVideo.snippet.title,
-      date: this.idVideo.snippet.publishTime,
-      url: this.idVideo.id.videoId,
-      description: this.idVideo.snippet.description
-    }
+    this._route.params.subscribe((params: Params) => {
+      this.id_usuario = params['id'];
+    });
+    this.userService.getUser(this.id_usuario).subscribe(res=>{
+      if(res.message ==='success'){
+          
+         this.busqueda = {
+          title: this.idVideo.snippet.title,
+          date: this.idVideo.snippet.publishTime,
+          url: this.idVideo.id.videoId,
+          description: this.idVideo.snippet.description,
+          correo: res.results[0].correo,
+        }
+         
+      }
+    });
   }
 
   
@@ -30,5 +46,6 @@ export class BusquedaComponent implements OnInit {
      this.marcarFavorita.emit({
         item:id
      })
+     
   }
 }
