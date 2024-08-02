@@ -10,7 +10,7 @@ Para arrancar el backend sera necesario situarse en la carpeta Bacend NodeJs. En
 
 Pasos para el uso de la aplicación 
 
-    1. Generar con el archivo Script las base de datos y tablas correspondientes.
+    1. Generar primero una base de datos llamada DbPrueba, despues con el archivo Script las tablas correspondientes.
     2. Generar un usuario y contraseña. Importante que el correo sea un correo real, ya que al no contar con el correo real no se podrá visualizar la función de mandar correo.
     3. Una vez iniciada la sesión, usted podrá observar la vista de búsqueda de videos, podrá seleccionarlos para favoritos. 
     4. En la pestaña de favoritos podrá visualizar los videos que se seleccionaron y podrá también quitarlos de la lista. Esta lista de favoritos, solo mostrara los favoritos
