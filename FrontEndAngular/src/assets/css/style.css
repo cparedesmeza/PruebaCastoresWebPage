@@ -173,7 +173,7 @@
     color: white;
     
   }
-  table th td{ 
+  table td, table th{ 
     color:var(--main_text_color);
   }
 

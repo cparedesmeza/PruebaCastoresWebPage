@@ -1,73 +1,75 @@
-<div class="register slider item flex-column center my-5">
+<div class="container-fluid center">
+    <div class="register slider item flex-column center my-5">
 
 
-    <div class="item center flex-column">
-        <h3>Nuevo Usuario</h3>
+        <div class="item center flex-column">
+            <h3>Nuevo Usuario</h3>
+        </div>
+        <form class="form flex-column" #userForm="ngForm" (ngSubmit)="onSubmit($event)">
+    
+            <div class="item flex-row">
+                <div class="item">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" placeholder="Nombre" name="nombre" #nombre='ngModel' [(ngModel)]="form.nombre" pattern="[a-zA-Z]+$" required/>
+    
+                    <small id="validation" *ngIf="!nombre.valid && nombre.touched">
+                        El campo nombre es obligatorio
+                    </small>
+                </div>
+                <div class="item">
+                    <label for="apellido">Apellido</label>
+                    <input type="text" placeholder="Apellido" name="apellido" #apellido='ngModel' [(ngModel)]="form.apellido" pattern="[a-zA-Z]+$" required/>
+    
+                    <small id="validation" *ngIf="!apellido.valid && apellido.touched">
+                        El campo apellido es obligatorio
+                    </small>
+                </div>
+            </div>
+            <div class="item flex-row">
+                <div class="item">
+                    <label for="usuario">Usuario</label>
+                    <input type="text" placeholder="Nombre" name="usuario" #usuario='ngModel' [(ngModel)]="form.usuario" pattern="[a-zA-Z]+$" required/>
+    
+                    <small id="validation" *ngIf="!usuario.valid && usuario.touched">
+                        El campo usuario es obligatorio
+                    </small>
+                </div>
+                <div class="item">
+                    <label for="correo">Correo</label>
+                    <input type="text" placeholder="correo" name="correo" #correo='ngModel' [(ngModel)]="form.correo" pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$" required/>
+    
+                    <small id="validation" *ngIf="!correo.valid && correo.touched">
+                        El campo correo es obligatorio
+                    </small>
+                       
+                </div>
+            </div>
+            <div class="item flex-column">
+                <div class="item">
+                    <label for="password">password</label>
+                    <input type="password" placeholder="***" name="pswd" #psw='ngModel' [(ngModel)]= "form.password" pattern="\d{5,5}" required/>
+    
+                    <small id="validation" *ngIf="!psw.valid && psw.touched">
+                        El campo password es obligatorio
+                    </small>
+                </div>
+                <div class="item">
+                    <label for="password">confirmar password</label>
+                    <input type="password" placeholder="***" name="cpswd" #cpsw='ngModel' [(ngModel)]= "form.newpassword" pattern="\d{5,5}" required/>
+    
+                    <small id="validation" *ngIf="!cpsw.valid && cpsw.touched">
+                        El campo password es obligatorio
+                    </small>
+                </div>
+    
+            </div>
+    
+            <div class="item flex-row center">
+                <button class="btn" type="submit" [disabled]="userForm.invalid">Registrar</button>
+                <button class="btn" [routerLink]="['/login']">Cancelar</button>
+            </div>
+    
+        </form>
+    
     </div>
-    <form class="form flex-column" #userForm="ngForm" (ngSubmit)="onSubmit($event)">
-
-        <div class="item flex-row">
-            <div class="item">
-                <label for="nombre">Nombre</label>
-                <input type="text" placeholder="Nombre" name="nombre" #nombre='ngModel' [(ngModel)]="form.nombre" pattern="[a-zA-Z]+$" required/>
-
-                <small id="validation" *ngIf="!nombre.valid && nombre.touched">
-                    El campo nombre es obligatorio
-                </small>
-            </div>
-            <div class="item">
-                <label for="apellido">Apellido</label>
-                <input type="text" placeholder="Apellido" name="apellido" #apellido='ngModel' [(ngModel)]="form.apellido" pattern="[a-zA-Z]+$" required/>
-
-                <small id="validation" *ngIf="!apellido.valid && apellido.touched">
-                    El campo apellido es obligatorio
-                </small>
-            </div>
-        </div>
-        <div class="item flex-row">
-            <div class="item">
-                <label for="usuario">Usuario</label>
-                <input type="text" placeholder="Nombre" name="usuario" #usuario='ngModel' [(ngModel)]="form.usuario" pattern="[a-zA-Z]+$" required/>
-
-                <small id="validation" *ngIf="!usuario.valid && usuario.touched">
-                    El campo usuario es obligatorio
-                </small>
-            </div>
-            <div class="item">
-                <label for="correo">Correo</label>
-                <input type="text" placeholder="correo" name="correo" #correo='ngModel' [(ngModel)]="form.correo" pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$" required/>
-
-                <small id="validation" *ngIf="!correo.valid && correo.touched">
-                    El campo correo es obligatorio
-                </small>
-                   
-            </div>
-        </div>
-        <div class="item flex-column">
-            <div class="item">
-                <label for="password">password</label>
-                <input type="password" placeholder="***" name="pswd" #psw='ngModel' [(ngModel)]= "form.password" pattern="\d{5,5}" required/>
-
-                <small id="validation" *ngIf="!psw.valid && psw.touched">
-                    El campo password es obligatorio
-                </small>
-            </div>
-            <div class="item">
-                <label for="password">confirmar password</label>
-                <input type="password" placeholder="***" name="cpswd" #cpsw='ngModel' [(ngModel)]= "form.newpassword" pattern="\d{5,5}" required/>
-
-                <small id="validation" *ngIf="!cpsw.valid && cpsw.touched">
-                    El campo password es obligatorio
-                </small>
-            </div>
-
-        </div>
-
-        <div class="item flex-row center">
-            <button class="btn" type="submit" [disabled]="userForm.invalid">Registrar</button>
-            <button class="btn" [routerLink]="['/login']">Cancelar</button>
-        </div>
-
-    </form>
-
 </div>
