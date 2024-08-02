@@ -4,7 +4,7 @@
 
     <div class="item flex-column busqueda">
         <form class="form flex-column" #userForm="ngForm" (ngSubmit)="onsubmit($event)">
-            <div class="item center">
+            <div class="item">
                 <label for="Busqueda">Busqueda detallada</label>
                 <input type="text" name="busqueda" #busqueda='ngModel' [(ngModel)]="texto.input" pattern="^[A-Za-z0-9 ]+$" required/>
 

@@ -1,4 +1,4 @@
-<div class="register slider container flex-column center my-5">
+<div class="register slider item flex-column center my-5">
 
 
     <div class="item center flex-column">
@@ -54,7 +54,7 @@
             </div>
             <div class="item">
                 <label for="password">confirmar password</label>
-                <input type="password" placeholder="***" name="pswd" #cpsw='ngModel' [(ngModel)]= "form.newpassword" pattern="\d{5,5}" required/>
+                <input type="password" placeholder="***" name="cpswd" #cpsw='ngModel' [(ngModel)]= "form.newpassword" pattern="\d{5,5}" required/>
 
                 <small id="validation" *ngIf="!cpsw.valid && cpsw.touched">
                     El campo password es obligatorio
@@ -63,12 +63,9 @@
 
         </div>
 
-        <div class="item center">
-           
-        </div>
-
-        <div class="item center">
+        <div class="item flex-row center">
             <button class="btn" type="submit" [disabled]="userForm.invalid">Registrar</button>
+            <button class="btn" [routerLink]="['/login']">Cancelar</button>
         </div>
 
     </form>
