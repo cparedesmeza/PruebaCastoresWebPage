@@ -1,7 +1,7 @@
 Descripción:
 
 La aplicación corre en front end con el framework de Angular, para arrancar la aplicación en localhost, deberá situarse en la carpeta de 
-FronEndAngular en consola poner el comando 'ng serve'. Esta aplicación hace peticiones HTTP a un Backend desarrollado en NodeJs y utilizando
+FronEndAngular en consola poner el comando 'ng serve' si no se ejecuta correr el comando npm install para instalar node. Esta aplicación hace peticiones HTTP a un Backend desarrollado en NodeJs y utilizando
 una base de datos SQL Server. Se incluirá en el proyecto un Script para crear las bases de datos para que este funcione de manera correcta.
 
 Para arrancar el backend sera necesario situarse en la carpeta Bacend NodeJs. En consola ejecutar el comando npm run dev, así este esta activo. 

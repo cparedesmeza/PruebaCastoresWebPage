@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { UserService } from '../../services/user.services';
 import { Router } from '@angular/router';
-import Swal from 'sweetalert2';
 
 declare var grecaptcha: any;
 
@@ -40,11 +39,7 @@ export class RegistroComponent {
           this._usersService.NewUser(this.form).subscribe(res => {
             console.log(res)
             if (res.message == 'success') {
-              Swal.fire({
-                title: "Usuario Creado",
-                text: "Bienvenido a la comunidad",
-                icon: "success"
-              });
+              alert('Usuario Creado, Bienvenido a la comunidad')
               this._router.navigate(['login']);
             }
           });

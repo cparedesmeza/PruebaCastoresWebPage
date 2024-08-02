@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from '../../services/user.services';
-import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-login',
@@ -33,18 +33,10 @@ export class LoginComponent {
               console.log('datos guardados');
            }
         })
-        Swal.fire({
-            title: "Log in realizado",
-            text: "Bienvenido de nuevo",
-            icon: "success"
-        });
+        alert('Log in realizado, bienvenido')
         this._router.navigate(['/home/' + res.results[0].id_usuario]) 
       }else{
-        Swal.fire({
-          title: "Log in no realizado",
-          text: "Usuario o password incorrectos",
-          icon: "error"
-        });
+        alert('Usuario o password incorrectos')
       }
       });
     }
