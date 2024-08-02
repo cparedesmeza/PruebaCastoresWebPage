@@ -9,6 +9,9 @@ getConecction();
 
 const app = express();
 
+app.get('/', (req, res) => {
+    res.send('Hello, world!');
+});
 // Configuración de CORS
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
