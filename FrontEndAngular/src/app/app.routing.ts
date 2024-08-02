@@ -7,6 +7,7 @@ import { HomeComponent } from "./components/home/home.component";
 import { MonitoreoComponent } from "./components/monitoreo/monitoreo.component";
 import { BusquedaComponent } from "./components/busqueda/busqueda.component";
 import { FavoritasComponent } from "./components/favoritas/favoritas.component";
+import { RecupasswordComponent } from "./components/recupassword/recupassword.component";
 
 //Options del router
 const routerOptions: ExtraOptions = {
@@ -21,6 +22,7 @@ const appRoutes: Routes = [
     { path: 'favoritas/:id', component: FavoritasComponent },
     { path: 'registro', component: RegistroComponent },
     { path: 'home/:id', component: HomeComponent },
+    { path: 'recuperacion', component: RecupasswordComponent },
     
 ];
 

@@ -37,6 +37,9 @@ export class UserService{
     getHistorial():Observable<any>{
         return this._http.get(this.url+'getHistory');
     }
+    getUserByMail(correo:string):Observable<any>{
+        return this._http.get(this.url+'getUserByMail/'+correo);
+    }
 
 
 }

@@ -1,5 +1,6 @@
 import { getConecction } from '../database/connection.js'
 import sql from 'mssql';
+import nodemailer from 'nodemailer';
 
 /* TABLA DE USUARIOS */
 export const Login = async (req, res) => {
@@ -73,6 +74,22 @@ export const getUser = async (req, res) => {
     const result = await pool.request()
         .input('id_usuario', sql.VarChar, req.params.id)
         .query("SELECT * FROM usuarios WHERE id_usuario = @id_usuario")
+    console.log(result)
+    if (result.rowsAffected[0] === 0) {
+        return res.json({ message: 'Usuario Inexistente' });
+    } else {
+        res.json({
+            message: 'success',
+            results: result.recordset
+        })
+    }
+}
+export const getUserByMail = async (req, res) => {
+    console.log(req.params.correo);
+    const pool = await getConecction();
+    const result = await pool.request()
+        .input('correo', sql.VarChar, req.params.correo)
+        .query("SELECT * FROM usuarios WHERE correo = @correo")
     console.log(result)
     if (result.rowsAffected[0] === 0) {
         return res.json({ message: 'Usuario Inexistente' });
@@ -169,6 +186,7 @@ export const getHistory = async (req, res) => {
     }
 }
 
+/* Uso de funciones */
 const ObterFechayHora = () =>{
     const fechaHoraActual = new Date();
     const anio = fechaHoraActual.getFullYear();
@@ -178,4 +196,60 @@ const ObterFechayHora = () =>{
     const minutos = fechaHoraActual.getMinutes().toString().padStart(2, '0');
     const segundos = fechaHoraActual.getSeconds().toString().padStart(2, '0');
     return `${dia}-${mes}-${anio} ${horas}:${minutos}:${segundos}`;
+}
+
+/* Mail */
+export const sendMail = async(req,res)=>{
+    console.log(req.body);
+    
+    let transporter = nodemailer.createTransport({
+        host: "smtp.gmail.com",
+        port: 465,
+        secure: true,
+        auth: {
+          type: "OAuth2",
+          clientId: "96581623928-uoodc3acujvonm6lp599h91gt0vsiks4.apps.googleusercontent.com",
+          clientSecret: "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",
+        },
+      });
+
+    var mailOptions = {
+        from: 'Carlos Paredes Meza',
+        to: req.body.correo,
+        subject: 'Recuperación de contraseña InnovaTube',
+        text: 'Hola ' + req.body.nombre + ' ' + ', este correo es con la finalidad de enviar tu contraseña para el usuario' + ' ' + req.body.usuario + ' ' +', la contraseña es' + ' ' + req.body.password + '               ' + 'Gracias por el uso de nuestra plataforma',
+        auth: {
+            user: "pruebaslocales51@gmail.com",
+            refreshToken: "1//04BNjf-fV0wieCgYIARAAGAQSNwF-L9Ir-4rB4gwsYAwkhgIwgvZoe2-x96Zg0aVIo3cTTev7_obZchg9zRkJeo5WBrq0eRurM-o",
+            accessToken: "ya29.a0AcM612wnXyJeFYce4VpxTN7qdfwjdahlT944oRN9Mm2fH5zFyzhcXdJ2DSTWVG0LEmfUwrhfc_9nxnEVWcdjbRnb0MJAY3YbUzz2CO4Ta9t7_ik53wYPEEMuHepTzbuuobjKo3tw-MgCpvTttbUeUYj0THiPqPOhA33paCgYKAe4SARASFQHGX2MiymBseqC4QsJImDVKQGriQg0171",
+          },
+    }
+
+    transporter.sendMail(mailOptions, function(error, info){
+        if (error) {
+            console.log(error)
+            res.status(500).send({
+                status: 'error',
+                message: 'Ha habido un error' + error
+            });  
+        } else {
+            console.log('email eviado')
+          res.status(200).send({
+            status: 'success',
+            message: 'El correo ya fue enviado' +info.response,
+        });  
+        }
+      });
+    
+    
+    
+    
+    
+    
+    
+    
+    res.json({
+        message: 'success',
+        results:{}
+    })
 }

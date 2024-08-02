@@ -20,6 +20,8 @@ import { youtubeService } from './services/youtube.services';
 import { HeaderComponent } from './components/header/header.component';
 import { MonitoreoComponent } from './components/monitoreo/monitoreo.component';
 import { FavoritasComponent } from './components/favoritas/favoritas.component';
+import { RecupasswordComponent } from './components/recupassword/recupassword.component';
+import { mailServices } from './services/mail.services';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,8 @@ import { FavoritasComponent } from './components/favoritas/favoritas.component';
     BusquedaComponent,
     HeaderComponent,
     MonitoreoComponent,
-    FavoritasComponent
+    FavoritasComponent,
+    RecupasswordComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +45,8 @@ import { FavoritasComponent } from './components/favoritas/favoritas.component';
   providers: [
     provideClientHydration(),
     UserService,
-    youtubeService
+    youtubeService,
+    mailServices
   ],
   bootstrap: [AppComponent]
 })
