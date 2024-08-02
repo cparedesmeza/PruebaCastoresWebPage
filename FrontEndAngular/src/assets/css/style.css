@@ -178,8 +178,55 @@
   .flex-row{
     flex-direction: column;
   }
-  .table-bordered th td{
-    border: none !important;
-    font-size: small !important;
+  table{
+    width: 100%;
+    font-size: 0.9em;
+  }
+  table tr{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid grey;
+    padding: 1em;
+  }
+  table td[data-titulo]{
+    display: flex;
+  }
+  table td[data-titulo]::before{
+    content: attr(data-titulo);
+    width:100px;
+    color:red;
+    font-weight: bold ;
+  }
+  table thead{
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 500px){
+
+  table{
+    width: 80%;
+    font-size: 0.6em;
+  }
+  table tr{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid grey;
+    padding: 0;
+  }
+  table td[data-titulo]{
+    display: flex;
+  }
+  table td[data-titulo]::before{
+    content: attr(data-titulo);
+    max-width:100px;
+    color:red;
+    font-weight: bold ;
+  }
+  table thead{
+    display: none;
+  }
+  .subitem{
+    padding: 0;
   }
 }
