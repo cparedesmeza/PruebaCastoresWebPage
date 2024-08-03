@@ -2,7 +2,7 @@ import dotenv from 'dotenv';
 import sql from 'mssql';
 
 dotenv.config();
-console.log('Server:', process.env.DB_SERVER);
+
 
 const dbSettings = {
     user: process.env.DB_USER,
@@ -21,6 +21,6 @@ export const getConecction = async () => {
         console.log('Conexión a base de datos correcta')
         return pool;
     } catch (error) {
-        console.error(error);
+        console.error('Error de conexion a la base de datos:',error);
     }
 }
