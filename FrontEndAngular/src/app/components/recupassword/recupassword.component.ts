@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { UserService } from '../../services/user.services';
 import { mailServices } from '../../services/mail.services';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-recupassword',
@@ -31,11 +32,20 @@ export class RecupasswordComponent {
         this.form.usuario = res.results[0].usuario;
         this.form.nombre = res.results[0].nombre;
         this.mailService.sendMail(this.form).subscribe(res=>{
-          alert('Correo enviado, correo existente')
+          Swal.fire({
+            title: "Correo Enviado",
+            text: "Usuario existente",
+            icon: "success"
+          })
+          
           this._router.navigate(['/login'])
         })
       }else{
-        alert('Correo no enviado, correo inexistente')
+        Swal.fire({
+          title: "Correo no enviado",
+          text: "Usuario inexistente",
+          icon: "error"
+        })
       }
     })
   }

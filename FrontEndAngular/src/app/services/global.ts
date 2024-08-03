@@ -1,3 +1,3 @@
 export var Global = {
-    url: 'https://pruebacastoreswebpage.onrender.com'
+    url: 'https://pruebacastoreswebpage.onrender.com/'
 };

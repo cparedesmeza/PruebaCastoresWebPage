@@ -3,6 +3,7 @@ import { youtubeService } from '../../services/youtube.services';
 import { UserService } from '../../services/user.services';
 import { Router } from '@angular/router';
 import { ActivatedRoute, Params } from '@angular/router';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -43,7 +44,11 @@ export class FavoritasComponent implements OnInit{
   seleccionarFavorita(event:Event, id= this.register){
     this.youtubeService.deleteFavorita(id).subscribe(res=>{
       if(res.message === 'Video eliminado de favoritos'){
-        alert('Registro de favorito deseleccionado')
+        Swal.fire({
+          title: "Registro Eliminado",
+          text: "Ya no es de tus favoritos",
+          icon: "success"
+        });
         this._router.navigate(['/home/' + this.id]) 
       }
     })
