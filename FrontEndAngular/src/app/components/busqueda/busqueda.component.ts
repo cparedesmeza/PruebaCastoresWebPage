@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, Output, OnInit} from '@angular/core';
 import { Link } from '../../models/links';
 import { UserService } from '../../services/user.services';
 import { ActivatedRoute,Params} from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-busqueda',
@@ -43,6 +44,11 @@ export class BusquedaComponent implements OnInit {
 
   
   elegirFavorita(event:Event, id=this.idVideo){
+     Swal.fire({
+      title: 'Video Favorito Agregado',
+      text: 'Agregado a la lista de favoritos',
+      icon:'success'
+     })
      this.marcarFavorita.emit({
         item:id
      })
